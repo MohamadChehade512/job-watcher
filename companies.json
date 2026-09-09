@@ -1,0 +1,59 @@
+{
+  "_comment": "api_companies use official ATS JSON endpoints (fast, reliable). scrape_targets have no public API — fetched as raw text and parsed by Claude. Board tokens below were checked against search results but NOT live-tested (sandbox has no network access to job-board domains) — run `python job_watcher.py --test-sources` after setup and fix/remove anything that 404s.",
+
+  "api_companies": [
+    { "name": "Anthropic",     "source": "greenhouse", "token": "anthropic" },
+    { "name": "OpenAI",        "source": "ashby",      "token": "openai" },
+    { "name": "Wealthsimple",  "source": "ashby",      "token": "wealthsimple" },
+    { "name": "Stripe",        "source": "greenhouse", "token": "stripe" },
+    { "name": "Airbnb",        "source": "greenhouse", "token": "airbnb" },
+    { "name": "Robinhood",     "source": "greenhouse", "token": "robinhood" },
+    { "name": "DoorDash",      "source": "greenhouse", "token": "doordash" },
+    { "name": "Coinbase",      "source": "greenhouse", "token": "coinbase" },
+    { "name": "Discord",       "source": "greenhouse", "token": "discord" },
+    { "name": "Dropbox",       "source": "greenhouse", "token": "dropbox" },
+    { "name": "Figma",         "source": "greenhouse", "token": "figma" },
+    { "name": "GitLab",        "source": "greenhouse", "token": "gitlab" },
+    { "name": "Instacart",     "source": "greenhouse", "token": "instacart" },
+    { "name": "Pinterest",     "source": "greenhouse", "token": "pinterest" },
+    { "name": "Reddit",        "source": "greenhouse", "token": "reddit" },
+    { "name": "Roblox",        "source": "greenhouse", "token": "roblox" },
+    { "name": "Affirm",        "source": "greenhouse", "token": "affirm" },
+    { "name": "Asana",         "source": "greenhouse", "token": "asana" },
+    { "name": "Palantir",      "source": "lever",      "token": "palantir" },
+    { "name": "Plaid",         "source": "lever",      "token": "plaid" },
+    { "name": "Ramp",          "source": "ashby",      "token": "ramp" },
+    { "name": "Notion",        "source": "ashby",      "token": "notion" },
+    { "name": "Linear",        "source": "ashby",      "token": "linear" }
+  ],
+
+  "scrape_targets": [
+    { "name": "Google",          "url": "https://www.google.com/about/careers/applications/jobs/results?target_level=INTERN_OR_APPRENTICE&target_level=EARLY" },
+    { "name": "Citadel",         "url": "https://www.citadel.com/careers/open-opportunities/?search=intern" },
+    { "name": "Shopify",         "url": "https://www.shopify.com/careers/search?query=intern" },
+    { "name": "Questrade",       "url": "https://www.questrade.com/careers" },
+    { "name": "RBC",             "url": "https://jobs.rbc.com/ca/en/search-results?keywords=software%20intern" },
+    { "name": "TD Bank",         "url": "https://jobs.td.com/en-CA/search/?q=software+intern" },
+    { "name": "Scotiabank",      "url": "https://jobs.scotiabank.com/search/?q=software%20intern" },
+    { "name": "BMO",             "url": "https://jobs.bmo.com/ca/en/search-results?keywords=software%20intern" },
+    { "name": "CIBC",            "url": "https://jobs.cibc.com/ca/en/search-results?keywords=software%20intern" }
+  ],
+
+  "filters": {
+    "title_must_include_any": ["intern", "internship", "co-op", "coop"],
+    "role_keywords_any": [
+      "software", "engineer", "engineering", "developer", "swe",
+      "backend", "back end", "front end", "frontend", "full stack", "fullstack",
+      "platform", "infrastructure", "systems", "data engineer", "data", "ml", "machine learning", "quant"
+    ],
+    "exclude_title_keywords": ["senior", "staff", "principal", "director"],
+    "season_keywords_any": ["2027", "summer 2027", "co-op", "coop", "winter 2027", "fall 2027"],
+    "countries_allowed": ["CA", "US"]
+  },
+
+  "resume_file": "resume.txt",
+
+  "email": {
+    "subject_prefix": "Job Watcher"
+  }
+}

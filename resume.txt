@@ -1,0 +1,52 @@
+MODY CHEHADE
+Burlington, ON | linkedin.com/in/mochehade
+
+Dual-degree Software Engineering and Business student (Western University / Ivey Business School)
+with hands-on experience building full-stack, production e-commerce systems. Recent work spans API
+design, cloud infrastructure (AWS), and CI/CD optimization on Bell Canada's flagship consumer
+platform, plus backend data-pipeline experience at a global media-intelligence company. Interested
+in software and technology roles at the intersection of engineering and financial services.
+
+EXPERIENCE
+
+Software Developer Intern | Bell Canada | May 2025 - Aug 2025
+Full-stack rebuild of bell.ca, Bell's primary e-commerce platform
+- Built and shipped production code to bell.ca using TypeScript, React, and AWS (Lambda,
+  CloudFormation, S3), redesigning core APIs to integrate with Salesforce for checkout and commerce.
+- Re-architected key services for performance and modularity, lowering long-term maintenance cost.
+- Introduced unit testing from the ground up for several APIs, built BDD test suites, raised code
+  coverage and caught regressions before release.
+- Cut CI/CD pipeline runtime by more than 50% through GitLab pipeline optimization.
+- Owned checkout-flow features end-to-end: spike docs, design, implementation, QA, release, and
+  post-launch monitoring/defect triage.
+- Used AI-assisted development tools (GitHub Copilot, Claude Code) to speed up implementation.
+
+Data Engineer Intern | MeltWater | Apr 2025 - Jul 2025
+Global media intelligence platform delivering real-time insights from news and social data
+- Supported design, implementation, testing, and deployment of backend services and analytics
+  features powering large-scale data pipelines.
+- Contributed to performance and scalability research for distributed systems.
+
+Sales Associate | Mark's Work Wearhouse | Apr 2021 - Apr 2023
+- Managed inventory, special orders, and seasonal merchandising; resolved customer issues.
+
+EDUCATION
+B.A.Sc. Software Engineering & Business (Dual Degree), Western University / Ivey Business School, 2024-2029
+- Selected into competitive Software Engineering discipline based on above-average first-year math
+  and programming performance. Coursework: AI development, data structures, algorithms.
+
+SKILLS
+Languages & Tools: Java, Python, C++, JavaScript, TypeScript, React, SQL, R, Git
+Cloud & Engineering: AWS (Lambda, CloudFormation, S3), Salesforce, CI/CD (GitLab), Unit & BDD Testing, REST APIs
+Business & Analytical: Business Case Analysis, Data Analysis, Project Management, Entrepreneurship
+Languages: English, French (DELF B2)
+
+PROJECTS
+Entrepreneurship Project: Decentralized Cloud Mining Grid (McMaster Student Entrepreneurship Competition)
+- Proposed a cloud-based cryptocurrency mining platform for off-site scalability.
+
+CERTIFICATIONS & AWARDS
+- Impactful Innovation Award, City of Burlington
+- Generative AI Leader, Google
+- DELF B2 (French Language Certification)
+- Founder, STEM Career Fair (500+ students; companies included Google, CIBC, Semtech)
