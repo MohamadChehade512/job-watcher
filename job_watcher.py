@@ -511,8 +511,11 @@ def main():
         send_email(html, subject)
         print("Email sent.")
 
-    save_seen_ids([j["id"] for j in ranked], seen_ids)
-    print("State saved.")
+    if not args.dry_run:
+        save_seen_ids([j["id"] for j in ranked], seen_ids)
+        print("State saved.")
+    else:
+        print("Dry run — state not saved (NEW tags next real run are unaffected).")
 
 
 if __name__ == "__main__":
