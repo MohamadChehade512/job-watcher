@@ -1,0 +1,70 @@
+name: Job Watcher
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "What to run"
+        required: true
+        default: "run"
+        type: choice
+        options:
+          - run
+          - dry-run
+          - test-sources
+
+permissions:
+  contents: write
+
+jobs:
+  run-watcher:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Test sources
+        if: github.event.inputs.mode == 'test-sources'
+        run: python job_watcher.py --test-sources
+
+      - name: Full run (send email)
+        if: github.event_name == 'schedule' || github.event.inputs.mode == 'run'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python job_watcher.py
+
+      - name: Dry run (no email)
+        if: github.event.inputs.mode == 'dry-run'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python job_watcher.py --dry-run
+
+      - name: Upload preview email
+        if: github.event.inputs.mode == 'dry-run'
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-email
+          path: output/preview_email.html
+          retention-days: 7
+
+      - name: Commit updated state
+        if: github.event_name == 'schedule' || github.event.inputs.mode == 'run'
+        run: |
+          git config user.name "job-watcher-bot"
+          git config user.email "actions@github.com"
+          git add state/seen_jobs.json
+          git diff --staged --quiet || git commit -m "Update seen jobs state [skip ci]"
+          git push
